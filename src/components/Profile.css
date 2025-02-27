@@ -485,6 +485,7 @@
     align-self: center;
     justify-content: center;
     flex-direction: column;
+    
   }
   .class_image {
     position: relative;
