@@ -93,7 +93,7 @@ export const SingniIn = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        // background: "grey",
+        background: "grey",
         padding: "10px",
       }}
     >
