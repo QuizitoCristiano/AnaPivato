@@ -268,7 +268,7 @@ export const SingniIn = () => {
                 style={{
                   fontSize: "14px",
                   fontWeight: "bold",
-                  color: "#000",
+                  color: "#00000",
                 }}
                 href="#"
               >
