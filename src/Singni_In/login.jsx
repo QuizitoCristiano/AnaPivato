@@ -90,6 +90,7 @@ export const SingniIn = () => {
       sx={{
         width: "100%",
         height: "100vh",
+        marginTop: "10%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

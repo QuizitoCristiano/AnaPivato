@@ -10,8 +10,8 @@ import Anapivato01 from "../logoImg/ana0.png";
 
 const myLink = [
   { label: "Home", link: "/" },
-  { label: "Sobre Nós", link: "/sobre-nos" },
-  { label: "Contato", link: "/contato" },
+  { label: "Sobre Nós", link: "/IndexAboutUs" },
+  { label: "Contato", link: "/SingniIn" },
 ];
 
 export const MyHeader = () => {
