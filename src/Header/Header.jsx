@@ -11,7 +11,7 @@ import Anapivato01 from "../logoImg/ana0.png";
 const myLink = [
   { label: "Home", link: "/" },
   { label: "Sobre Nós", link: "/IndexAboutUs" },
-  { label: "Contato", link: "/SingniIn" },
+  { label: "Contato", link: "/ContactForm" },
 ];
 
 export const MyHeader = () => {
@@ -183,5 +183,8 @@ export const MyHeader = () => {
         </Button>
       </Stack>
     </Stack>
+
+
+    
   );
 };

@@ -38,7 +38,7 @@ export const MyHome = () => {
         <CardProduct />
         <MySidebar />
         <SmallFooter />
-        <MyFooter />
+        
       </Stack>
 
    

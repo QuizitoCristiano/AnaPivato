@@ -6,6 +6,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 const MemberCard = ({ img, name, role }) => {
   return (
     <div className="team_member">
+      
       <div className="team_member_image">
         <img src={img} alt={name} />
       </div>

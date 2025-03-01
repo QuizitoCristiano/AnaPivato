@@ -28,12 +28,6 @@
 
 /*==========================================Conquistas===========================*/
 
-.section_container {
-  margin: auto;
-  padding: 5rem 5rem;
-
-  width: 100%;
-}
 .about_achievements {
   gap: 4rem;
   /* background: #1e2020; */
@@ -130,25 +124,23 @@
   width: 100%;
 
   margin: 50px;
-
+  /* background: #1f2125; */
 }
 
-
 .team_member {
-  background: #181717;
   padding: 2rem;
   border-radius: 1rem;
   border: 1px solid transparent;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
-  border: 1px solid #d79447;
+  border: 2px solid #6d6b69;
+  background: #1f2125;
 }
 
 .team_member:hover {
-  background: transparent;
-  border-color: var(--secondary-color);
- 
+  background: #181717;
+  border-color: var(--pink-active-border-color);
 }
 
 .team_member_image img {
@@ -199,6 +191,7 @@
 
 .team_member:hover .team_membar_socials {
   right: 0;
+  background: var(--pink-active-border-color);
 }
 
 .team_membar_socials a {
@@ -206,121 +199,73 @@
 }
 
 .team_container {
-    display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin: 8rem;
-  }
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 8rem;
+}
+
 
 
 /* ====================== TABLETS (MÁXIMO 3 POR LINHA) ====================== */
-@media screen and (max-width: 1299px) {
-    .team_container {
-      grid-template-columns: repeat(3, 1fr); /* 3 cards por linha */
-      gap: 1.5rem;
-      margin: 3rem;
-   
-    }
-
-
-    .about_about_achievements-container {
-        margin-top: 2rem;
-        grid-template-columns: 1fr;
-        gap: 4rem;
-      }
-    
-      .about_achievements-left {
-        width: 80%;
-        margin: 0 auto;
-      }
-    
-      .about_achievements {
-        margin: 10rem;
-        width: 100%;
-      }
-    
-      .team_container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin: 5rem ;
-      }
+@media screen and (max-width: 1409px) {
+  .team_container {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
+    margin: 3rem;
   
-  
-    .team_member {
-      padding: 1rem;
-    }
-
-
-
-    .achievements_cards {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.7rem;
-      }
-    
-      .team_container {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.7rem;
-        margin: 1rem ;
-      }
-    
-      .team_member {
-        padding: 0;
-      }
-    
-      .team_member p {
-        margin-bottom: 1.5rem;
-      }
-    
   }
-  
-  /* ====================== TABLETS PEQUENOS (MÁXIMO 2 POR LINHA) ====================== */
-  @media screen and (max-width: 868px) {
-    .team_container {
-      grid-template-columns: repeat(2, 1fr); /* 2 cards por linha */
-      gap: 1.2rem;
-      margin: 2rem;
-      background-color: #d90429;
-    }
+
+  .about_about_achievements-container {
+    margin-top: 2rem;
+    grid-template-columns: 1fr;
+    gap: 4rem;
   }
-  
-  /* ====================== CELULARES ====================== */
-  @media screen and (max-width: 600px) {
-    .team_container {
-      grid-template-columns: 1fr; /* Apenas 1 card por linha */
-      gap: 1rem;
-      margin: 1rem;
-    }
-  
-    .team_member {
-      padding: 1rem;
-    }
-  
-    .team_member p {
-      margin-bottom: 1rem;
-    }
+
+  .about_achievements-left {
+    width: 80%;
+    margin: 0 auto;
   }
-  
 
+  .about_achievements {
+    margin: 10rem;
+    width: 100%;
+  }
 
-  
+  .team_member {
+    padding: 1.6rem;
+  }
 
+  .achievements_cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+}
 
+/* ====================== TABLETS PEQUENOS (MÁXIMO 2 POR LINHA) ====================== */
+@media screen and (max-width: 868px) {
+  .team_container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin: 2rem;
+  }
+}
 
+/* ====================== CELULARES ====================== */
+@media screen and (max-width: 600px) {
+  .team_container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0.1rem;
+  }
 
+  .team_member {
+    padding: 1.4rem;
+  }
 
+  .team_member p {
+    margin-bottom: 1rem;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-    

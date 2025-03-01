@@ -2,7 +2,7 @@ import React from "react";
 import "./StylsAbout.css";
 import { Stack } from "@mui/material";
 
-import Quizitoto from "../../logoImg/quizito1.jpg";
+import Quizitoto from "../../logoImg/anapivato3.jpg";
 import DuoIcon from "@mui/icons-material/Duo";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import InsightsIcon from "@mui/icons-material/Insights";
