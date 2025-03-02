@@ -9,12 +9,11 @@ import { MySidebar } from "../components/Sidebar";
 import { SmallFooter } from "../components/smollFooter";
 import { MyFooter } from "../layout/Footer/Footer";
 import { SingniIn } from "../Singni_In/login";
-
+import { ChatWhatsApp } from "../chatWats/zap";
 
 export const MyHome = () => {
   return (
     <>
-      
       <Stack
         sx={{
           minHeight: "100vh",
@@ -38,10 +37,8 @@ export const MyHome = () => {
         <CardProduct />
         <MySidebar />
         <SmallFooter />
-        
       </Stack>
-
-   
+      <ChatWhatsApp />
     </>
   );
 };

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";  // Usando NavLink
+import { NavLink, useNavigate } from "react-router-dom"; // Importando useNavigate
 import "./header.css";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import CloseIcon from "@mui/icons-material/Close";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Box, Stack, Typography, Button } from "@mui/material";
-
+import { Stack, Button } from "@mui/material";
 import Anapivato01 from "../logoImg/ana0.png";
 
 const myLink = [
@@ -15,28 +13,21 @@ const myLink = [
 ];
 
 export const MyHeader = () => {
+  const navigate = useNavigate();
   const [abreMeno, setAbreMeno] = useState(false);
+  const [scrolling, setScrolling] = useState(false); // Estado para detectar o scroll
 
-  const abrirMenu = () => setAbreMeno(true);
-  const fecharMenu = () => setAbreMeno(false);
-
-  const [scrolling, setScrolling] = useState(false);  // Estado para detectar o scroll
-
-
-  // Função para controlar o efeito da borda ao rolar
-  const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setScrolling(true); // Ativa o estado de rolagem
-    } else {
-      setScrolling(false); // Desativa o estado de rolagem
-    }
+  const handleMenuClick = (link) => {
+    setAbreMeno(false); // Fecha o menu
+    navigate(link); // Navega para o link
   };
 
-  // Adiciona o listener de scroll quando o componente monta
+  const handleScroll = () => {
+    setScrolling(window.scrollY > 0);
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    
-    // Remove o listener quando o componente desmonta
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -51,45 +42,31 @@ export const MyHeader = () => {
         top: "0",
         left: "0",
         right: "0",
-        
         flexDirection: "row",
         display: "flex",
         background: "#111317",
         color: "#fff",
-        // boxShadow: "0 9px 1rem rgb(14 55 54 / 65%)",
         borderBottom: scrolling ? "1px solid #323946" : "#323946", // Aplica a borda ao rolar
-
         transition: "0.5s",
         alignItems: "center",
-      
         justifyContent: "space-between",
         zIndex: "2000",
-
-
         "@media only screen and (max-width: 800px)": {
           padding: "20px 10px",
-          },
-        
+        },
       }}
     >
-      {/* Logo e título */}
       <Stack
         sx={{
           display: "flex",
           alignItems: "flex-start",
-      
           justifyContent: "center",
           height: "60px",
           width: "20%",
-       
           position: "relative",
-
           "@media only screen and (max-width: 800px)": {
             width: "45%",
-            
-            position: "relative",
           },
-        
         }}
       >
         <img
@@ -104,7 +81,6 @@ export const MyHeader = () => {
         />
       </Stack>
 
-      {/* Links de navegação */}
       <Stack className="myNaveLink">
         <div className="logo-links">
           {myLink.map((item, index) => (
@@ -114,8 +90,9 @@ export const MyHeader = () => {
               aria-label={item.label}
               style={({ isActive }) => ({
                 textDecoration: "none",
-                color: isActive ? "#d90429" : "#fff", // Altere a cor do link ativo
+                color: isActive ? "#d90429" : "#fff",
               })}
+              onClick={() => handleMenuClick(item.link)} // Fecha o menu ao clicar no link
             >
               <p>{item.label}</p>
             </NavLink>
@@ -124,7 +101,7 @@ export const MyHeader = () => {
 
         {/* Menu mobile */}
         <div className="logo-icons">
-          <span onClick={abrirMenu} aria-label="Abrir menu">
+          <span onClick={() => setAbreMeno(!abreMeno)} aria-label="Abrir menu">
             {abreMeno ? <CloseIcon /> : <DehazeIcon />}
           </span>
         </div>
@@ -132,7 +109,7 @@ export const MyHeader = () => {
         {abreMeno && (
           <div className="menu-celular">
             <div className="icone-fechar">
-              <span onClick={fecharMenu} aria-label="Fechar menu">
+              <span onClick={() => setAbreMeno(false)} aria-label="Fechar menu">
                 Fechar
                 <CloseIcon />
               </span>
@@ -145,8 +122,9 @@ export const MyHeader = () => {
                   aria-label={item.label}
                   style={({ isActive }) => ({
                     textDecoration: "none",
-                    color: isActive ? "#d90429" : "#fff", // Altere a cor do link ativo
+                    color: isActive ? "#d90429" : "#fff",
                   })}
+                  onClick={() => handleMenuClick(item.link)} // Fecha o menu ao clicar no link
                 >
                   <p>{item.label}</p>
                 </NavLink>
@@ -156,7 +134,6 @@ export const MyHeader = () => {
         )}
       </Stack>
 
-      {/* Avatar e Carrinho de Compras */}
       <Stack direction="row" alignItems="center">
         <Button
           sx={{
@@ -183,8 +160,5 @@ export const MyHeader = () => {
         </Button>
       </Stack>
     </Stack>
-
-
-    
   );
 };

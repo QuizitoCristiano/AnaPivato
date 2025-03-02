@@ -43,12 +43,22 @@ body {
   background-color: var(--primary-color);
   overflow-x: hidden !important;
   width: 100%;
-
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
+}
+
+
+.floating-message {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.floating-message:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 

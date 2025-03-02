@@ -9,20 +9,23 @@ import quizito3 from "../../logoImg/anacoll.jpg";
 import quizito4 from "../../logoImg/anapivato2.jpg";
 import quizito5 from "../../logoImg/ana03.jpg";
 import quizito6 from "../../logoImg/anapt.jpg";
-import quizito7 from "../../logoImg/anapivato1.jpg";
-import quizito8 from "../../logoImg/anapse.jpg";
+import quizito7 from "../../logoImg/quizito2.jpg";
+import quizito8 from "../../logoImg/anaanaGestor.jpg";
 import { Box } from "@mui/material";
 
 const teamMembers = [
-  { img: quizito1, name: "Quizito Cristiano", role: "Tutor Especialista" },
-  { img: quizito2, name: "Quizito Cristiano", role: "Expert Tutor" },
-  { img: quizito3, name: "Quizito Cristiano", role: "Expert Tutor" },
-  { img: quizito4, name: "Quizito Cristiano", role: "Expert Tutor" },
-  { img: quizito5, name: "Quizito Cristiano", role: "Expert Tutor" },
-  { img: quizito6, name: "Quizito Cristiano", role: "Expert Tutor" },
-  { img: quizito7, name: "Quizito Cristiano", role: "Expert Tutor" },
-  { img: quizito8, name: "Quizito Cristiano", role: "Expert Tutor" },
+  { img: quizito1, name: "Ana Cláudia Pivato", role: "Especialista em Marketing Digital" },
+  { img: quizito2, name: "Quizito Cristiano", role: "Captador de Oportunidades e Leads" }, 
+  { img: quizito3, name: "Carlos Mendes", role: "CEO | Especialista em Estratégia de Tráfego" },
+  { img: quizito4, name: "Quizito Cristiano", role: "Desenvolvedor de Experiências Digitais" }, 
+  { img: quizito5, name: "Eduardo Lima", role: "Analista de Performance e Conversão" },
+  { img: quizito6, name: "Ana Cláudia Pivato", role: "Especialista em SEO e Posicionamento" },
+  { img: quizito7, name: "Quizito Cristiano", role: "CIO | Consultor de Marketing Estratégico" },
+  { img: quizito8, name: "Ana Cláudia Pivato", role: "Gestora de Mídias Sociais e Engajamento" },
 ];
+
+
+
 
 const Team = () => {
   return (

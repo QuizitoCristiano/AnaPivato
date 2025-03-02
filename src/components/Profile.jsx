@@ -22,7 +22,7 @@ export const ProfileCard = () => {
         padding: "1rem",
 
         borderRadius: "10px",
-       
+
         boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
         transition: "box-shadow 0.3s ease",
         "&:hover": {
@@ -33,7 +33,7 @@ export const ProfileCard = () => {
     >
       <Stack className="explore_container">
         <div className="explore_header">
-          <h2 className="section_header">EXPLORE OUR PROGRAM</h2>
+          <h2 className="section_header">EXPLORE NOSSO PROGRAMA</h2>
 
           <div className="explore_nav">
             <span>
@@ -48,13 +48,13 @@ export const ProfileCard = () => {
         <div className="explore_grid">
           <div className="explore_card">
             <span>
-              <AddHomeWorkIcon />
+              <SportsKabaddiIcon />
             </span>
-            <h4>Uma Escolha Perfeita</h4>
+            <h4>✅ Uma Escolha Perfeita</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
+              Cada decisão molda o seu futuro! Escolher a estratégia certa é o
+              primeiro passo para alcançar o topo. 🔥 Seja no digital ou no
+              presencial, garanta que sua marca se destaque da concorrência!
             </p>
             <Button
               sx={{
@@ -85,12 +85,11 @@ export const ProfileCard = () => {
             <span>
               <SportsKabaddiIcon />
             </span>
-            <h4>Um Ótimo Planejamene</h4>
-
+            <h4>📊 Um Ótimo Planejamento</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
+              O sucesso começa com um plano estratégico! Com uma abordagem bem
+              definida, você transforma desafios em oportunidades e constrói uma
+              presença digital sólida. 🚀 Está pronto para dar o próximo passo?
             </p>
             <Button
               sx={{
@@ -121,11 +120,12 @@ export const ProfileCard = () => {
             <span>
               <Diversity1Icon />
             </span>
-            <h4>Novas Plataforma</h4>
+            <h4>🌐 Novas Plataformas</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
+              A revolução digital está acontecendo agora! Descubra novas
+              plataformas e ferramentas para expandir sua marca e alcançar
+              públicos que realmente importam. 📢 Inovação é a chave para o
+              crescimento!
             </p>
             <Button
               sx={{
@@ -156,12 +156,12 @@ export const ProfileCard = () => {
             <span>
               <SchoolIcon />
             </span>
-
-            <h4>Ana claudia</h4>
+            <h4>👩‍💼 Ana Claudia</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
+              Histórias de sucesso inspiram e motivam! Conheça a trajetória de
+              Ana Claudia e descubra como estratégias bem aplicadas podem
+              transformar desafios em conquistas. ✨ O próximo grande case pode
+              ser o seu!
             </p>
             <Button
               sx={{

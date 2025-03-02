@@ -438,6 +438,18 @@
     font-size: 1.2rem;
   }
 
+  .join_container {
+    margin-bottom: 15rem;
+  }
+
+  .join_grid {
+    width: 100%;
+    margin: 0;
+    bottom: -16rem;
+ 
+
+  
+  }
   .explore_card h4 {
     margin-bottom: 1rem;
     font-size: 1.4rem;
@@ -503,12 +515,13 @@
     gap: 1rem;
   }
   .join_container {
-    margin-bottom: 23rem;
+    margin-bottom: 31rem;
   }
   .join_grid {
     width: 100%;
     margin: 0;
-    bottom: -31rem;
+    bottom: -39rem;
+  
   }
 
   .section_Fortheader {
@@ -543,6 +556,14 @@
   .explore_grid {
     grid-template-columns: repeat(1, 1fr);
     padding: 0;
+  }
+
+  .join_grid {
+    width: 100%;
+    margin: 0;
+    bottom: -38rem;
+ 
+  
   }
 
   .price_grid {

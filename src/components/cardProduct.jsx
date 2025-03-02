@@ -20,10 +20,10 @@ export const CardProduct = () => {
           <div className="class_content">
             <h2 className="section_header">THE CALASS YOU WILL GET HERE</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
-              facilisis nunc. Sed vulputate, ligula in fermentum fermentum, urna
-              urna consectetur neque, vel malesuada velit ipsum non justo.
-            </p>
+            Descubra um mundo de aprendizado e crescimento! Nossos cursos oferecem 
+            uma abordagem prática para transformar sua experiência e potencial. 
+            Junte-se a nós e comece sua jornada hoje!
+          </p>
 
             <Button
               sx={{
@@ -31,7 +31,7 @@ export const CardProduct = () => {
                 border: "none !important",
                 outline: "none !important",
                 color: "#fff",
-                padding: "8px 5px",
+                padding: "15px 12px",
                 borderRadius: "5px",
                 fontSize: "16px",
                 fontWeight: "bold",
@@ -47,7 +47,7 @@ export const CardProduct = () => {
               }}
               startIcon={<AddHomeWorkIcon />}
             >
-              Buy Now
+                Comprar Agora
             </Button>
           </div>
         </div>

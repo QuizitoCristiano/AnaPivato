@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Stack,
-  FormControl,
-  InputLabel,
-  Input,
-  InputAdornment,
+  Box,
+  Typography,
+  Button,
+  Modal,
   IconButton,
   TextField,
-  Button,
-  Box,
 } from "@mui/material";
 
 import {
@@ -19,25 +17,118 @@ import {
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
+import Textarea from "@mui/joy/Textarea"; // Verifique se essa importação está correta
 
 import { Email, Phone } from "@mui/icons-material";
 import ReplyAllIcon from "@mui/icons-material/ReplyAll";
 import "./ContactStyles.css";
+
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions"; // Ícone do botão para abrir o modal
+
+const emojiList = [
+  { name: "Riso com Lágrimas", emoji: "🤣" },
+  { name: "Coração com Flecha", emoji: "💞" },
+  { name: "Cerveja", emoji: "🍺" },
+  { name: "Macaco", emoji: "🙈" },
+  { name: "Deslumbrado", emoji: "🤩" },
+  { name: "Amor", emoji: "😍" },
+  { name: "Carinha Apaixonada", emoji: "🥰" },
+  { name: "Festa", emoji: "🥳" },
+  { name: "Raio", emoji: "⚡" },
+  { name: "Fogo", emoji: "🔥" },
+  { name: "Ilha", emoji: "🏝" },
+  { name: "Praia", emoji: "🏖" },
+  { name: "Fogos de Artifício", emoji: "🎇" },
+  { name: "Fogos", emoji: "🎆" },
+  { name: "Chorando", emoji: "😢" },
+  { name: "Anel", emoji: "💍" },
+  { name: "Troféu", emoji: "🏆" },
+  { name: "Medalha de Ouro", emoji: "🥇" },
+  { name: "Coração Vermelho", emoji: "❤" },
+  { name: "Coração Verde", emoji: "💚" },
+  { name: "Coração Azul", emoji: "💙" },
+  { name: "Polegar para Cima", emoji: "👍" },
+  { name: "Ilha", emoji: "🏝" },
+  { name: "Festa", emoji: "🥳" },
+  { name: "Bolo", emoji: "🎂" },
+  { name: "Flores", emoji: "💐" },
+  { name: "Champanhe", emoji: "🍾" },
+  { name: "Festa com Confetes", emoji: "🎉" },
+  { name: "Coração com Laço", emoji: "💝" },
+  { name: "Cerveja", emoji: "🍻" },
+  { name: "Prato", emoji: "🍽" },
+  { name: "Vinho", emoji: "🍷" },
+  { name: "Coquetel", emoji: "🍹" },
+  { name: "Avião", emoji: "✈" },
+  { name: "Carrinho de Compras", emoji: "🛒" },
+  { name: "Presente", emoji: "🎁" },
+  { name: "Envelope", emoji: "📩" },
+  { name: "Laço", emoji: "🎀" },
+  { name: "Estetoscópio", emoji: "🩺" },
+  { name: "Ímã", emoji: "🧲" },
+  { name: "Cadeado", emoji: "🔐" },
+  { name: "Relógio", emoji: "🕘" },
+];
+
 const ContactForm = () => {
+  const [textSon, setTextSon] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
+  const AddEmoji = (emoji) => () => {
+    setTextSon((prevText) => `${prevText}${emoji}`);
+    handleCloseModal();
+  };
+
+  const filteredEmojis = emojiList.filter((emoji) =>
+    emoji.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       <Stack
         sx={{
-            width: "100%",
-            minHeight: "100vh", // Permite crescer
-            marginTop: "1%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            // background: "grey",
-            padding: "10px",
+          width: "100%",
+          minHeight: "100vh", // Permite crescer
+          marginTop: "10%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          // background: "grey",
+          padding: "10px",
         }}
       >
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: "1500px",
+            padding: "10px",
+            marginTop: "2rem",
+            borderRadius: "10px",
+            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            transition: "0.3s",
+          }}
+        >
+          <Typography
+            sx={{
+              fontWeight: "medium",
+              fontSize: "1.4rem",
+              color: "#fff",
+            }}
+          >
+            Valorizamos a transparência e a satisfação do cliente. Se você não
+            estiver satisfeito com sua experiência, estamos aqui para ajudar.
+            Sua opinião é importante e estamos constantemente trabalhando para
+            melhorar nossos serviços.
+          </Typography>
+        </Box>
+
         <div className="containerForm">
           <div className="contact-left">
             <h1
@@ -49,15 +140,16 @@ const ContactForm = () => {
             >
               Contact Me
             </h1>
-            <p
+            <Typography
               style={{
                 fontWeight: "bold",
                 color: "#fff",
+                fontSize: "1.5rem",
                 marginTop: "2.3rem",
               }}
             >
               Entre em contato conosco para mais informações.
-            </p>
+            </Typography>
             <ul
               style={{
                 marginTop: "2rem",
@@ -139,7 +231,7 @@ const ContactForm = () => {
                 fontSize: "16px",
                 fontWeight: "bold",
                 cursor: "pointer",
-                marginTop: '2rem',
+                marginTop: "2rem",
                 minWidth: "150px",
                 boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.16)",
                 transition: "all 0.3s",
@@ -174,40 +266,118 @@ const ContactForm = () => {
                 />
               </div>
 
-              <textarea placeholder="Mensagem" required></textarea>
+              {/* <textarea placeholder="Mensagem" required></textarea> */}
 
-               <Box sx={{
-                display: "flex",
-                justifyContent: "space-between",
-               }}>
-
-              <Button
+              <Textarea
+                placeholder="Digite sua mensagem aqui…"
+                value={textSon}
+                onChange={(e) => setTextSon(e.target.value)}
+                minRows={2}
+                maxRows={4}
+                endDecorator={
+                  <Button onClick={handleOpenModal}>
+                    <EmojiEmotionsIcon />
+                  </Button>
+                }
                 sx={{
-                  background: "#d90429",
-                  border: "none !important",
-                  outline: "none !important",
+                  minWidth: 300,
+                  backgroundColor: "#262626",
                   color: "#fff",
-                  padding: "1rem 3.9rem",
-                  borderRadius: "10px",
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                  minWidth: "150px",
-                  boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.16)",
+                  fontSize: '1.2rem',
+                  
+                 
+                 
+                  fontWeight: 500,
                   transition: "all 0.3s",
-                  "&:hover": { background: "#e83c4a" },
-                  "&:disabled": { background: "#ccc" },
-                  "@media (max-width: 900px)": {
-                    minWidth: "100px",
-                  },
+                }}
+              />
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
                 }}
               >
-                Enviar
-              </Button>
-               </Box>
+                <Button
+                  sx={{
+                    background: "#d90429",
+                    border: "none !important",
+                    outline: "none !important",
+                    color: "#fff",
+                    padding: "1rem 3.9rem",
+                    borderRadius: "10px",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                    marginTop: "2.5rem",
+
+                    minWidth: "150px",
+                    boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.16)",
+                    transition: "all 0.3s",
+                    "&:hover": { background: "#e83c4a" },
+                    "&:disabled": { background: "#ccc" },
+                    "@media (max-width: 900px)": {
+                      minWidth: "100px",
+                    },
+                  }}
+                >
+                  Enviar
+                </Button>
+              </Box>
             </form>
           </div>
         </div>
+
+        <Modal open={modalOpen} onClose={handleCloseModal}>
+  <Box
+    sx={{
+      width: {
+        
+        xs: "99%", // 100% de largura em telas pequenas
+        sm: 400,    // 400px em telas médias e maiores
+      },
+      padding: 2,
+      backgroundColor: "white",
+      borderRadius: 2,
+      margin: "auto",
+    
+      marginTop: '27%',
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    }}
+  >
+    <Typography variant="h6" gutterBottom>
+      Selecione um Emoji
+    </Typography>
+    <TextField
+     sx={{
+       width: "100%",
+  
+       marginTop: 1,
+       padding: "10px",
+    
+       backgroundColor: "#f5f5f5",
+       transition: "all 0.3s",
+       "&:hover": {
+         backgroundColor: "#e6e6e6",
+       },
+     }}
+      variant="outlined"
+      placeholder="Pesquisar..."
+      onChange={(e) => setSearchTerm(e.target.value)}
+      fullWidth
+    />
+    <Box sx={{ display: "flex", flexWrap: "wrap", marginTop: 1 }}>
+      {filteredEmojis.map((emoji) => (
+        <IconButton key={emoji.name} onClick={AddEmoji(emoji.emoji)}>
+          <span style={{ fontSize: "24px" }}>{emoji.emoji}</span>
+        </IconButton>
+      ))}
+    </Box>
+  </Box>
+</Modal>
+
       </Stack>
     </>
   );
