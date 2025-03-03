@@ -178,7 +178,7 @@ const Achievements = () => {
               alignItems: "center",
               justifyContent: "center",
               padding: "1.5rem",
-              borderRadius: "15px",
+              borderRadius: "16px",
               height: "190px",
               background: "rgba(20, 20, 20, 0.9)",
               textAlign: "center",
