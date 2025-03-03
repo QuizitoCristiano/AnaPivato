@@ -27,6 +27,8 @@ const MemberCard = ({ img, name, role }) => {
         }}>{role}</p>
       </div>
 
+   
+
       <div className="team_membar_socials">
         <a
           href="https://instagram.com"
@@ -65,6 +67,8 @@ const MemberCard = ({ img, name, role }) => {
           />
         </a>
       </div>
+
+   
     </div>
   );
 };

@@ -48,19 +48,16 @@ export const ChatWhatsApp = () => {
   const handleSendMessage = () => {
     if (!message.trim()) return;
 
-    // Cria a nova mensagem do usuário
     const newMessage = { type: "outgoing", text: message };
     const updatedMessages = [...messages, newMessage];
 
-    // Atualiza o estado das mensagens
+
     setMessages(updatedMessages);
 
-    saveMessagesToLocalStorage(updatedMessages); // Salvar no localStorage
+    saveMessagesToLocalStorage(updatedMessages); 
 
-    // Limpa a mensagem de entrada
     setMessage("");
 
-    // Exibir "digitando..." antes de enviar a resposta automática
     setIsTyping(true);
 
     // Aguarda um pequeno tempo antes de enviar a resposta automática
@@ -80,10 +77,9 @@ export const ChatWhatsApp = () => {
       };
       const updatedMessages = [...messages, newMessage];
 
-      // Atualiza o estado das mensagens com a nova mensagem automática
       setMessages((prevMessages) => [...prevMessages, newMessage]);
-      saveMessagesToLocalStorage(updatedMessages); // Salvar no localStorage
-      setAutomaticMessageIndex(automaticMessageIndex + 1); // Avança para a próxima mensagem
+      saveMessagesToLocalStorage(updatedMessages);
+      setAutomaticMessageIndex(automaticMessageIndex + 1); 
     } else {
       const newMessage = {
         type: "incoming",

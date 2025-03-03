@@ -12,12 +12,13 @@ import quizito6 from "../../logoImg/anapt.jpg";
 import quizito7 from "../../logoImg/quizito2.jpg";
 import quizito8 from "../../logoImg/anaanaGestor.jpg";
 import { Box } from "@mui/material";
+import Achievements from "./Achievements";
 
 const teamMembers = [
   { img: quizito1, name: "Ana Cláudia Pivato", role: "Especialista em Marketing Digital" },
   { img: quizito2, name: "Quizito Cristiano", role: "Captador de Oportunidades e Leads" }, 
   { img: quizito3, name: "Carlos Mendes", role: "CEO | Especialista em Estratégia de Tráfego" },
-  { img: quizito4, name: "Quizito Cristiano", role: "Desenvolvedor de Experiências Digitais" }, 
+  { img: quizito4, name: "Quizito Cristiano Agostinho", role: "Desenvolvedor de Experiências Digitais" }, 
   { img: quizito5, name: "Eduardo Lima", role: "Analista de Performance e Conversão" },
   { img: quizito6, name: "Ana Cláudia Pivato", role: "Especialista em SEO e Posicionamento" },
   { img: quizito7, name: "Quizito Cristiano", role: "CIO | Consultor de Marketing Estratégico" },
@@ -30,7 +31,7 @@ const teamMembers = [
 const Team = () => {
   return (
     <section className="team">
-      
+        <Achievements/>
       <Box
         sx={{
           padding: "50px 0",
@@ -44,7 +45,10 @@ const Team = () => {
         <h1>Conheça o nosso time</h1>
       </Box>
 
+    
+
       <div className="team_container">
+       
         
         {teamMembers.map((member, index) => (
           <MemberCard
