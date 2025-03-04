@@ -13,6 +13,8 @@ import quizito7 from "../../logoImg/quizito2.jpg";
 import quizito8 from "../../logoImg/anaanaGestor.jpg";
 import { Box } from "@mui/material";
 import Achievements from "./Achievements";
+import AboutDesignDeveloperSkill from "./aboutDesign";
+
 
 const teamMembers = [
   { img: quizito1, name: "Ana Cláudia Pivato", role: "Especialista em Marketing Digital" },
@@ -31,6 +33,7 @@ const teamMembers = [
 const Team = () => {
   return (
     <section className="team">
+      <AboutDesignDeveloperSkill/>
         <Achievements/>
       <Box
         sx={{

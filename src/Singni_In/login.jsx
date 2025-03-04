@@ -1,4 +1,16 @@
 import React, { useState } from "react";
+// quizitocristiano10@gmail.com
+// Agostinho25
+
+// Ana Cláudia Pivato
+// anaclaudia@gmail.com
+// AnaPivato2465
+
+// Lina Cristiano
+// lynacristiano28@gmai.com
+// lhyna258
+
+import { Link, useNavigate } from "react-router-dom";
 import {
   Stack,
   FormControl,
@@ -16,22 +28,42 @@ import {
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  fetchSignInMethodsForEmail,
+  onAuthStateChanged,
+} from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  query,
+  where,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 import "./styleSingni.css";
 
 export const SingniIn = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordLogin, setShowPasswordLogin] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  const [formErrors, setFormErrors] = useState({});
-
-
-  
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const toggleForm = () => {
     setIsRegistering(!isRegistering);
@@ -40,7 +72,7 @@ export const SingniIn = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  
+
     // Limpa o erro do nome apenas se estiver no login
     if (!isRegistering && name === "name") {
       setFormErrors((prevErrors) => ({ ...prevErrors, name: "" }));
@@ -51,51 +83,103 @@ export const SingniIn = () => {
 
   const validateForm = () => {
     let errors = {};
-
+  
     if (isRegistering) {
       if (!formData.name.trim() || formData.name.length < 3) {
         errors.name = "O nome deve ter pelo menos 3 caracteres.";
       }
     }
-
+  
     if (!formData.email.trim()) {
       errors.email = "O e-mail é obrigatório.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errors.email = "E-mail inválido.";
     }
-
+  
     if (!formData.password.trim()) {
       errors.password = "A senha é obrigatória.";
     } else if (formData.password.length < 6) {
       errors.password = "A senha deve ter pelo menos 6 caracteres.";
     }
-
+  
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log(
-        isRegistering ? "Cadastro válido:" : "Login válido:",
-        formData
-      );
-      // Aqui você pode enviar os dados para o backend ou Firebase
+      const auth = getAuth();
+      const firestore = getFirestore();
+      const usersCollection = collection(firestore, "users");
+      try {
+        if (isRegistering) {
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            formData.email,
+            formData.password
+          );
+          const user = userCredential.user;
+          await updateProfile(user, { displayName: formData.name });
+  
+          const userDocRef = doc(usersCollection, user.uid);
+          await setDoc(userDocRef, {
+            id: user.uid,
+            email: formData.email,
+            name: formData.name,
+          });
+  
+          alert("Usuário cadastrado com sucesso!");
+  
+          // Redirecionar para a seção de login após um pequeno atraso
+          setTimeout(() => {
+            setFormData({
+              name: "",
+              email: formData.email,
+              password: "",
+            });
+            toggleForm();
+            navigate('/SingniIn'); // Redireciona para a página de login após cadastro
+          }, 2000); // 2 segundos de atraso
+  
+        } else {
+          // Aqui você pode implementar o login, se necessário
+        }
+      } catch (error) {
+        alert("Erro ao criar usuário: " + error.message);
+      }
+    } else {
+      console.log("Formulário inválido, corrigir erros.");
     }
   };
-
+  
   return (
     <Stack
       sx={{
-        width: "100%",
-        height: "100vh",
-        marginTop: "10%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "grey",
-        padding: "10px",
+        flexDirection: "row",
+        gap: "2rem",
+        margin: "2rem",
+        padding: "3rem",
+        borderRadius: "10px",
+        width: "100%",
+        height: "100vh",
+        // bgcolor: "red",
+        overflow: "hidden",
+        transition: "all 0.3s ease-in-out",
+
+        "@media (max-width: 1291px)": {
+          flexDirection: "column",
+          margin: "1rem",
+          padding: "1rem",
+        },
+        "@media (max-width: 480px)": {
+          padding: "0rem",
+          margin: "0.3rem",
+          gap: "0.3rem",
+        },
       }}
     >
       <div className={`container ${isRegistering ? "active" : ""}`}>

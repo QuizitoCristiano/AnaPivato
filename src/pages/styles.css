@@ -43,11 +43,11 @@ body {
   background-color: var(--primary-color);
   overflow-x: hidden !important;
   width: 100%;
- 
+/*  
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 
 }
 

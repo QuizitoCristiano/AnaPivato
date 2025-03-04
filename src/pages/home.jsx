@@ -8,8 +8,8 @@ import { CardProduct } from "../components/cardProduct";
 import { MySidebar } from "../components/Sidebar";
 import { SmallFooter } from "../components/smollFooter";
 import { MyFooter } from "../layout/Footer/Footer";
-import { SingniIn } from "../Singni_In/login";
 import { ChatWhatsApp } from "../chatWats/zap";
+import AboutDesignDeveloperSkill from "../components/About/aboutDesign";
 
 export const MyHome = () => {
   return (
@@ -34,7 +34,9 @@ export const MyHome = () => {
       >
         <ControlledCarousel />
         <ProfileCard />
+   
         <CardProduct />
+      
         <MySidebar />
         <SmallFooter />
       </Stack>

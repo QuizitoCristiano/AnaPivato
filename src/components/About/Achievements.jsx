@@ -82,7 +82,6 @@ const Achievements = () => {
           alignItems: "center",
           gap: "1rem",
           transition: "all 0.3s ease-in-out",
-
           background:
             "linear-gradient(135deg, rgba(20, 12, 12, 0.9) 35%,rgb(99, 16, 30) 100%)",
           "@media (max-width: 768px)": {
@@ -120,7 +119,7 @@ const Achievements = () => {
               },
             }}
           >
-             Anos de experiência
+            Anos de experiência
           </Typography>
         </Box>
 

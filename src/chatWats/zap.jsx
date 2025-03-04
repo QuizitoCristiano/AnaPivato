@@ -194,17 +194,17 @@ export const ChatWhatsApp = () => {
     <Stack
       sx={{
         display: "flex",
-        maxWidth: "1290px",
+        marginTop: "5rem",
         marginLeft: "auto",
         marginRight: "auto",
-        position: "relative",
+        
         alignItems: "center",
         justifyContent: "center",
         // bgcolor: "#e3f2fd",
         gap: "2rem",
-        padding: "20px 20px",
+        // padding: "20px 20px",
         position: "absolute",
-        height: "100vh",
+        height: "10vh",
        
         zIndex: 9999,
       }}
