@@ -135,7 +135,9 @@ export const MyHeader = () => {
       </Stack>
 
       <Stack direction="row" alignItems="center">
+        
         <Button
+           onClick={() => window.location.href = "/SingniIn"}
           sx={{
             background: "#d90429",
             border: "none !important",
@@ -157,6 +159,7 @@ export const MyHeader = () => {
           }}
         >
           Join Now
+   
         </Button>
       </Stack>
     </Stack>

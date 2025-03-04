@@ -79,14 +79,6 @@
   border-color: var(--pink-active-border-color);
 }
 
-.explore_card span {
-  display: inline-block;
-  padding: 2px 9px;
-  margin-bottom: 1rem;
-  color: var(--white);
-  background-color: var(--pink-active-border-color);
-  border-radius: 5px;
-}
 
 .explore_card h4 {
   margin-bottom: 0.5rem;
@@ -98,7 +90,7 @@
 
 .explore_card p {
   margin-bottom: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--text-light);
 }
 

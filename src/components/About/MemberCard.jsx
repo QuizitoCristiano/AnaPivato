@@ -31,7 +31,7 @@ const MemberCard = ({ img, name, role }) => {
 
       <div className="team_membar_socials">
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/anaclaudiapivato"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -1,6 +1,6 @@
 import React from "react";
 import "./StylsAbout.css";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 import Quizitoto from "../../logoImg/anapivato3.jpg";
 import DuoIcon from "@mui/icons-material/Duo";
@@ -8,6 +8,26 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import InsightsIcon from "@mui/icons-material/Insights";
 import GrassIcon from "@mui/icons-material/Grass";
 import Team from "./Team";
+
+const unlockedBadges = [
+  {
+    icon: <DuoIcon />,
+    title: "450+",
+    description: "Cursos transformando mentes",
+  },
+
+  {
+    icon: <VerifiedUserIcon />,
+    title: "79,000+",
+    description: "Estudantes rumo ao sucesso",
+  },
+
+  {
+    icon: <InsightsIcon />,
+    title: "26+",
+    description: "Prêmios reconhecendo excelência",
+  },
+];
 const IndexAboutUs = () => {
   return (
     <Stack
@@ -32,44 +52,56 @@ const IndexAboutUs = () => {
           </div>
 
           <div className="about_achievements-right">
-            <h1>Conquistas</h1>
+            <h1>Conquistas: O que te separa do extraordinário?</h1>
             <p>
-              As conquistas desempenham um papel fundamental em nossa jornada.
-              Elas são os marcos que nos lembram de nosso potencial e dedicação.
-              Cada conquista, por menor que seja, é um passo em direção aos
-              nossos sonhos e objetivos.
+              Conquistar não é apenas sobre números. É sobre impacto, sobre
+              deixar sua marca no mundo. Cada passo dado, cada desafio superado,
+              aproxima você de um patamar que poucos ousam alcançar. Você já
+              chegou longe, mas e se pudesse ir ainda além? O que está faltando
+              para a sua próxima grande vitória?
             </p>
 
-            <div className="achievements_cards">
-              <div className="achievements-card">
-                <span className="achievements_icon">
-                  <i>
-                    <DuoIcon />
-                  </i>
-                </span>
-                <h3>450+</h3>
-                <p>Cursos</p>
-              </div>
+            <Stack
+              sx={{
+                display: "grid",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "row",
 
-              <div className="achievements-card">
-                <span className="achievements_icon">
-                  <i>
-                    <VerifiedUserIcon />
-                  </i>
-                </span>
-                <h3>79,000+</h3>
-                <p>Estudante</p>
-              </div>
-              <div className="achievements-card">
-                <span className="achievements_icon">
-                  <i>
-                    <InsightsIcon />
-                  </i>
-                </span>
-                <h3>26+</h3>
-                <p>Prêmio</p>
-              </div>
-            </div>
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+
+                gap: "2rem",
+                margin: "2rem",
+
+                "@media (max-width: 408px)": {
+                  gridTemplateColumns: "1fr",
+                  gap: "1rem",
+                  margin: "1rem",
+                },
+
+                "@media (max-width: 480px)": {
+                  gridTemplateColumns: "1fr",
+                  gap: "0.5rem",
+                  margin: "0.5rem",
+                },
+              }}
+            >
+              {unlockedBadges.map((badge, index) => (
+                <Box key={index} className="achievements-card">
+                  <span className="achievements_icon">
+                    <i>{badge.icon}</i>
+                  </span>
+                  <h3>{badge.title}</h3>
+                  <p>{badge.description}</p>
+                </Box>
+              ))}
+            </Stack>
+
+            <p>
+              Se você sente que ainda há mais para conquistar, talvez esteja a
+              um único passo de algo grandioso. A pergunta é: você está pronto
+              para dar esse passo?
+            </p>
           </div>
         </div>
       </Stack>
