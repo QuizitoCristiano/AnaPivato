@@ -58,9 +58,9 @@
 }
 
 .about_achievements-right > h1 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: var(--pink-active-border-color);
+  color: var(--secondary-color);
   /* background: #6c63ff; */
 }
 
@@ -217,6 +217,12 @@
   
   }
 
+  .about_achievements-right > h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+   
+  }
+
   .about_about_achievements-container {
     margin-top: 2rem;
     grid-template-columns: 1fr;
@@ -250,6 +256,13 @@
     gap: 1.2rem;
     margin: 2rem;
   }
+
+  .about_achievements-right > h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+   
+  }
+
 }
 
 /* ====================== CELULARES ====================== */
@@ -267,5 +280,12 @@
   .team_member p {
     margin-bottom: 1rem;
   }
+
+  .about_achievements-right > h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+   
+  }
+
 }
 

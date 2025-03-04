@@ -75,6 +75,18 @@ const ContactForm = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+   
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+   
+  });
+
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
@@ -86,6 +98,39 @@ const ContactForm = () => {
   const filteredEmojis = emojiList.filter((emoji) =>
     emoji.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+
+    // Se o campo de nome for obrigatório, valide
+    if (!formData.name) {
+      errors.name = "Informe o nome completo"; // Mantenha essa linha se o nome for obrigatório
+    }
+
+    // Validação de email
+    if (!formData.email) {
+      errors.email = "E-mail é obrigatório";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Por favor, digite um e-mail válido";
+    }
+
+    // Validação de mensagem
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+    } else {
+      // Aqui você pode realizar a ação de envio do formulário
+      console.log("Formulário enviado com sucesso!", formData);
+      // Limpar o formulário após o envio
+      setFormData({ name: "", email: "" });
+      setFormErrors({ name: "", email: "" });
+    }
+  };
 
   return (
     <>
@@ -247,33 +292,58 @@ const ContactForm = () => {
           </div>
 
           <div className="contact-right">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="input_container">
                 <PersonIcon className="iconField" />
                 <input
                   type="text"
                   placeholder="Digite o seu nome..."
-                  name="Nome"
+                  name="name" // O nome do campo deve corresponder ao estado
+                  value={formData.name}
+                  onChange={handleChange}
+                  // Remova a propriedade required se o campo de nome não for obrigatório
                 />
+                {formErrors.name && (
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "1rem",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {formErrors.name}
+                  </p>
+                )}{" "}
+                {/* Exibir erro apenas se houver */}
               </div>
-
               <div className="input_container">
                 <ReplyAllIcon className="iconField" />
                 <input
                   type="email"
                   placeholder="Digite o seu E-mail"
                   name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
+                {formErrors.email && (
+                  <p
+                    style={{
+                      color: "red",
+                      fontSize: "1rem",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {formErrors.email}
+                  </p>
+                )}
               </div>
-
-              {/* <textarea placeholder="Mensagem" required></textarea> */}
-
               <Textarea
                 placeholder="Digite sua mensagem aqui…"
                 value={textSon}
-                onChange={(e) => setTextSon(e.target.value)}
                 minRows={2}
                 maxRows={4}
+                required
                 endDecorator={
                   <Button onClick={handleOpenModal}>
                     <EmojiEmotionsIcon />
@@ -283,15 +353,20 @@ const ContactForm = () => {
                   minWidth: 300,
                   backgroundColor: "#262626",
                   color: "#fff",
-                  fontSize: '1.2rem',
-                  
-                 
-                 
+                  fontSize: "1.2rem",
+
                   fontWeight: 500,
                   transition: "all 0.3s",
                 }}
               />
-
+              {formErrors.message && (
+                <p
+                  style={{ color: "red", fontSize: "1rem", marginTop: "1rem" }}
+                >
+                  {formErrors.message}
+                </p>
+              )}{" "}
+              {/* Exibir erro apenas se houver */}
               <Box
                 sx={{
                   display: "flex",
@@ -299,6 +374,7 @@ const ContactForm = () => {
                 }}
               >
                 <Button
+                  type="submit"
                   sx={{
                     background: "#d90429",
                     border: "none !important",
@@ -310,7 +386,6 @@ const ContactForm = () => {
                     fontWeight: "bold",
                     cursor: "pointer",
                     marginTop: "2.5rem",
-
                     minWidth: "150px",
                     boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.16)",
                     transition: "all 0.3s",
@@ -329,55 +404,53 @@ const ContactForm = () => {
         </div>
 
         <Modal open={modalOpen} onClose={handleCloseModal}>
-  <Box
-    sx={{
-      width: {
-        
-        xs: "99%", // 100% de largura em telas pequenas
-        sm: 400,    // 400px em telas médias e maiores
-      },
-      padding: 2,
-      backgroundColor: "white",
-      borderRadius: 2,
-      margin: "auto",
-    
-      marginTop: '27%',
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    }}
-  >
-    <Typography variant="h6" gutterBottom>
-      Selecione um Emoji
-    </Typography>
-    <TextField
-     sx={{
-       width: "100%",
-  
-       marginTop: 1,
-       padding: "10px",
-    
-       backgroundColor: "#f5f5f5",
-       transition: "all 0.3s",
-       "&:hover": {
-         backgroundColor: "#e6e6e6",
-       },
-     }}
-      variant="outlined"
-      placeholder="Pesquisar..."
-      onChange={(e) => setSearchTerm(e.target.value)}
-      fullWidth
-    />
-    <Box sx={{ display: "flex", flexWrap: "wrap", marginTop: 1 }}>
-      {filteredEmojis.map((emoji) => (
-        <IconButton key={emoji.name} onClick={AddEmoji(emoji.emoji)}>
-          <span style={{ fontSize: "24px" }}>{emoji.emoji}</span>
-        </IconButton>
-      ))}
-    </Box>
-  </Box>
-</Modal>
+          <Box
+            sx={{
+              width: {
+                xs: "99%", // 100% de largura em telas pequenas
+                sm: 400, // 400px em telas médias e maiores
+              },
+              padding: 2,
+              backgroundColor: "white",
+              borderRadius: 2,
+              margin: "auto",
 
+              marginTop: "27%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h6" gutterBottom>
+              Selecione um Emoji
+            </Typography>
+            <TextField
+              sx={{
+                width: "100%",
+
+                marginTop: 1,
+                padding: "10px",
+
+                backgroundColor: "#f5f5f5",
+                transition: "all 0.3s",
+                "&:hover": {
+                  backgroundColor: "#e6e6e6",
+                },
+              }}
+              variant="outlined"
+              placeholder="Pesquisar..."
+              onChange={(e) => setSearchTerm(e.target.value)}
+              fullWidth
+            />
+            <Box sx={{ display: "flex", flexWrap: "wrap", marginTop: 1 }}>
+              {filteredEmojis.map((emoji) => (
+                <IconButton key={emoji.name} onClick={AddEmoji(emoji.emoji)}>
+                  <span style={{ fontSize: "24px" }}>{emoji.emoji}</span>
+                </IconButton>
+              ))}
+            </Box>
+          </Box>
+        </Modal>
       </Stack>
     </>
   );
